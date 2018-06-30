@@ -8,6 +8,7 @@ public class BallMovement : MonoBehaviour
     private float speed;
 
     Vector3 position;
+    private Vector3 wrld;
 
 	// Use this for initialization
 	void Start ()
@@ -20,6 +21,7 @@ public class BallMovement : MonoBehaviour
         speed = 1.0f;
 
         gameObject.AddComponent<BoxCollider2D>();
+        wrld = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0.0f, 0.0f));
     }
 	
 	// Update is called once per frame
@@ -73,18 +75,23 @@ public class BallMovement : MonoBehaviour
             movingUp = false;
         if (transform.position.y <= -4f)
             movingUp = true;
+
+        if (transform.position.x > wrld.x || transform.position.x < wrld.x)
+        {
+            Application.Quit();
+        }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         // If it collides with the left player
-        if (other.gameObject.tag.Equals("LeftPlayer"))
+        if (other.gameObject.name.Equals("LeftPlayer"))
         {
             movingRight = true;
         }
 
         // If it collides with the right player
-        if (other.gameObject.tag.Equals("RightPlayer"))
+        if (other.gameObject.name.Equals("RightPlayer"))
         {
             movingRight = false;
         }
