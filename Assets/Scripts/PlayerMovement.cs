@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         if (gameObject.tag.Equals("RightPlayer"))
         {
             // Move Up
-            if (Input.GetKey(KeyCode.UpArrow) /* && transform.position.y < (4.5 - halfHeight) */)
+            if (Input.GetKey(KeyCode.UpArrow) && transform.position.y < wrld.y - 1.5f) 
             {
                 position.x = GameObject.FindWithTag("RightPlayer").transform.position.x;
                 position.y = GameObject.FindWithTag("RightPlayer").transform.position.y + (.025f * wrld.y);
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             }
             
             // Move Down
-            if (Input.GetKey(KeyCode.DownArrow) /* && transform.position.y > (-4.5 + halfHeight) */)
+            if (Input.GetKey(KeyCode.DownArrow) && transform.position.y > -wrld.y + 1.5f)
             {
                 position.x = GameObject.FindWithTag("RightPlayer").transform.position.x;
                 position.y = GameObject.FindWithTag("RightPlayer").transform.position.y - (.025f * wrld.y);
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             // Move Up
-            if (Input.GetKey(KeyCode.W) /* && transform.position.y < (4.5 - halfHeight) */)
+            if (Input.GetKey(KeyCode.W) && transform.position.y < wrld.y - 1.5f)
             {
                 position.x = GameObject.FindWithTag("LeftPlayer").transform.position.x;
                 position.y = GameObject.FindWithTag("LeftPlayer").transform.position.y + (.025f * wrld.y);
@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             // Move Down
-            if (Input.GetKey(KeyCode.S) /* && transform.position.y > (-4.5 + halfHeight) */)
+            if (Input.GetKey(KeyCode.S) && transform.position.y > -wrld.y + 1.5f)
             {
                 position.x = GameObject.FindWithTag("LeftPlayer").transform.position.x;
                 position.y = GameObject.FindWithTag("LeftPlayer").transform.position.y - (.025f * wrld.y);
